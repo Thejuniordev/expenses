@@ -19,7 +19,7 @@ class MyHomePage extends StatelessWidget {
     Transaction(
         id: 't1',
         title: 'Final de ano com a familia',
-        value: 4345.54,
+        value: 945.54,
         date: DateTime.now()),
     Transaction(
         id: 't2',
@@ -56,13 +56,18 @@ class MyHomePage extends StatelessWidget {
                         ),
                         decoration: BoxDecoration(
                           border: Border.all(
-                            color: Colors.black,
+                            color: Colors.blueAccent,
                             width: 2,
                           ),
                         ),
                         padding: const EdgeInsets.all(10),
                         child: Text(
                           transaction.value.toString(),
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                            color: Colors.blueAccent,
+                          ),
                         ),
                       ),
                       Column(
