@@ -19,7 +19,7 @@ class MyHomePage extends StatelessWidget {
     Transaction(
         id: 't1',
         title: 'Final de ano com a familia',
-        value: 945.54,
+        value: 945.50,
         date: DateTime.now()),
     Transaction(
         id: 't2',
@@ -62,7 +62,7 @@ class MyHomePage extends StatelessWidget {
                         ),
                         padding: const EdgeInsets.all(10),
                         child: Text(
-                          transaction.value.toString(),
+                          'R\$ ${transaction.value.toStringAsFixed(2)}',
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20,
