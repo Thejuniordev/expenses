@@ -42,9 +42,9 @@ class _TransactionUserState extends State<TransactionUser> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [
+      children: <Widget>[
         TransactionList(transactions: _transactions),
-        const TransactionForm(),
+        TransactionForm(onSubmit: _addTransaction),
       ],
     );
   }
