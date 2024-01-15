@@ -34,6 +34,7 @@ class TransactionForm extends StatelessWidget {
                     final title = titlecontroller.text;
                     final value = double.tryParse(valuecontroller.text) ?? 0;
                     onSubmit(title, value);
+                    print(titlecontroller.text);
                   },
                   child: const Text('Nova transação'),
                 ),
