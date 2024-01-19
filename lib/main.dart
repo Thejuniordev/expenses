@@ -1,4 +1,8 @@
-import 'package:expenses/components/transaction_user.dart';
+import 'dart:math';
+
+import 'package:expenses/components/transaction_form.dart';
+import 'package:expenses/components/transaction_list.dart';
+import 'package:expenses/models/transaction.dart';
 import 'package:flutter/material.dart';
 
 main() => runApp(const ExpensesApp());
@@ -12,8 +16,49 @@ class ExpensesApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  final _transactions = [
+    Transaction(
+        id: 't1',
+        title: 'Final de ano com a familia',
+        value: 945.50,
+        date: DateTime.now()),
+    Transaction(
+        id: 't2',
+        title: 'Conta de luz de casa',
+        value: 257.44,
+        date: DateTime.now()),
+  ];
+
+  _openTransactionFormModal(BuildContext context) {
+    showModalBottomSheet(
+        context: context,
+        builder: (ctx) {
+          return TransactionForm(
+            onSubmit: (String, double) {},
+          );
+        });
+  }
+
+  _addTransaction(String title, double value) {
+    final newTransaction = Transaction(
+      id: Random().nextDouble().toString(),
+      title: title,
+      value: value,
+      date: DateTime.now(),
+    );
+
+    setState(() {
+      _transactions.add(newTransaction);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +67,7 @@ class MyHomePage extends StatelessWidget {
         title: const Text('Despesas pessoais'),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () => _openTransactionFormModal(context),
             icon: const Icon(Icons.add),
           )
         ],
@@ -37,12 +82,12 @@ class MyHomePage extends StatelessWidget {
                 child: Text('Meu Gráfico'),
               ),
             ),
-            const TransactionUser(),
+            TransactionList(transactions: _transactions),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () => _openTransactionFormModal(context),
         child: const Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
