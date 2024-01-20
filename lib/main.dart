@@ -16,6 +16,7 @@ class ExpensesApp extends StatelessWidget {
       home: const MyHomePage(),
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
+        fontFamily: 'Roboto',
       ),
     );
   }
@@ -69,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Despesas pessoais'),
+        title: const Text('Despesas Pessoais'),
         actions: [
           IconButton(
             onPressed: () => _openTransactionFormModal(context),
