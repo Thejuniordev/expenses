@@ -1,3 +1,4 @@
+import 'package:expenses/components/chart_bar.dart';
 import 'package:expenses/models/transaction.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -27,9 +28,6 @@ class Chart extends StatelessWidget {
         }
       }
 
-      print(day);
-      print(totalSum);
-
       return {
         'day': day,
         'value': totalSum,
@@ -39,11 +37,18 @@ class Chart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Card(
+    return Card(
       elevation: 6,
-      margin: EdgeInsets.all(20),
+      margin: const EdgeInsets.all(20),
       child: Row(
-        children: [],
+        children: groupTransactions.map((transaction) {
+          return ChartBar(
+            label: transaction['day'],
+            value: transaction['value'],
+            percentage: 0.7,
+          );
+          // return Text('${transaction['day']}: ${transaction['value']}');
+        }).toList(),
       ),
     );
   }
