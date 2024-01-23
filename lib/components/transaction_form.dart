@@ -47,6 +47,18 @@ class _TransactionFormState extends State<TransactionForm> {
                 labelText: 'Valor (R\$)',
               ),
             ),
+            SizedBox(
+              height: 70,
+              child: Row(
+                children: [
+                  Text('Nenhuma data selecionada'),
+                  ElevatedButton(
+                    onPressed: () {},
+                    child: Text('Selecionar data'),
+                  )
+                ],
+              ),
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
