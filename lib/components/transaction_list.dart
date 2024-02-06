@@ -1,11 +1,15 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:expenses/models/transaction.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class TransactionList extends StatelessWidget {
   List<Transaction> transactions;
+  void Function(String) onDelete;
 
-  TransactionList({super.key, required this.transactions});
+  TransactionList(
+      {super.key, required this.transactions, required this.onDelete});
 
   @override
   Widget build(BuildContext context) {
@@ -64,6 +68,11 @@ class TransactionList extends StatelessWidget {
                     ),
                     subtitle: Text(
                       DateFormat('d MMM y').format(transaction.date),
+                    ),
+                    trailing: IconButton(
+                      onPressed: () => onDelete(transaction.id),
+                      icon: const Icon(Icons.delete),
+                      color: Colors.red,
                     ),
                   ),
                 );
