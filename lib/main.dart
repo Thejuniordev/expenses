@@ -80,7 +80,10 @@ class _MyHomePageState extends State<MyHomePage> {
         MediaQuery.of(context).orientation == Orientation.landscape;
 
     final appBar = AppBar(
-      title: const Text('Despesas Pessoais'),
+      backgroundColor: Colors.deepPurple[200],
+      title: const Text(
+        'Despesas Pessoais',
+      ),
       actions: [
         if (isLandscape)
           IconButton(
@@ -90,10 +93,12 @@ class _MyHomePageState extends State<MyHomePage> {
               });
             },
             icon: Icon(_showChart ? Icons.list : Icons.show_chart),
+            color: Colors.white,
           ),
         IconButton(
           onPressed: () => _openTransactionFormModal(context),
           icon: const Icon(Icons.add),
+          color: Colors.white,
         ),
       ],
     );
