@@ -64,16 +64,24 @@ class TransactionList extends StatelessWidget {
                   title: Text(
                     transaction.title,
                     style: const TextStyle(
-                        fontSize: 20, fontWeight: FontWeight.bold),
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   subtitle: Text(
                     DateFormat('d MMM y').format(transaction.date),
                   ),
-                  trailing: IconButton(
-                    onPressed: () => onDelete(transaction.id),
-                    icon: const Icon(Icons.delete),
-                    color: Colors.red,
-                  ),
+                  trailing: MediaQuery.of(context).size.width > 400
+                      ? FloatingActionButton(
+                          onPressed: () => onDelete(transaction.id),
+                          tooltip: 'Excluir',
+                          child: const Icon(Icons.delete),
+                        )
+                      : IconButton(
+                          onPressed: () => onDelete(transaction.id),
+                          icon: const Icon(Icons.delete),
+                          color: Colors.red,
+                        ),
                 ),
               );
             },
